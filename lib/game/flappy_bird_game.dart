@@ -26,7 +26,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
     await super.onLoad();
 
     // Load music
-    
+
     musicPlayer = await FlameAudio.loopLongAudio('music.mp3', volume: 0.5);
     addAll([
       Background(),
@@ -44,7 +44,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       anchor: Anchor.center,
       textRenderer: TextPaint(
         style: const TextStyle(
-          fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
+            fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -58,7 +58,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
     interval.update(dt);
-    score.text = 'Chitti Points: ${bird.score}';
+    score.text = 'Points: ${bird.score}';
     // Potential collision detection
   }
 }
