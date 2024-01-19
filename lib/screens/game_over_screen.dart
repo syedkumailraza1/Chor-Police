@@ -15,7 +15,7 @@ class GameOverScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Chitti Points: ${game.bird.score}',
+                'Points: ${game.bird.score}',
                 style: const TextStyle(
                   fontSize: 60,
                   color: Colors.white,
