@@ -16,7 +16,7 @@ class PipeGroup extends PositionComponent with HasGameRef<FlappyBirdGame> {
   Future<void> onLoad() async {
     position.x = gameRef.size.x;
 
-    final heightMinusGround = gameRef.size.y - Config.groundHeight;
+    final heightMinusGround = gameRef.size.y - Config1.groundHeight;
     final spacing = 50 + _random.nextDouble() * (heightMinusGround / 4);
     final centerY =
         spacing + _random.nextDouble() * (heightMinusGround - spacing);
@@ -37,7 +37,7 @@ class PipeGroup extends PositionComponent with HasGameRef<FlappyBirdGame> {
   @override
   void update(double dt) {
     super.update(dt);
-    position.x -= Config.gameSpeed * dt;
+    position.x -= Config1.gameSpeed * dt;
 
     if (position.x < -10) {
       removeFromParent();

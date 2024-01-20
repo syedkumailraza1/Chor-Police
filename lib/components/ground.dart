@@ -6,8 +6,8 @@ import 'package:flappy_bird_game/game/flappy_bird_game.dart';
 class Ground extends PositionComponent with HasGameRef<FlappyBirdGame> {
   @override
   Future<void> onLoad() async {
-    var size = Vector2(gameRef.size.x, Config.groundHeight);
-    var position =  Vector2(0, gameRef.size.y - Config.groundHeight);
+    var size = Vector2(gameRef.size.x, Config1.groundHeight);
+    var position =  Vector2(0, gameRef.size.y - Config1.groundHeight);
     add(RectangleHitbox(size: size,position: position )); // Add the hitbox
   }
 }

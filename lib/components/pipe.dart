@@ -37,7 +37,7 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
     // Assign the sprite here
     sprite = Sprite(pipe);
 
-    size = Vector2(140, 140);
+    size = Vector2(100, 100);
 
     // Generate Y position, ensuring no overlap with existing pipes
     double randomYPosition;
@@ -69,7 +69,7 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
 
     } while (!validPositionFound ||
         randomYPosition < 0 ||
-        randomYPosition > gameRef.size.y - height - Config.groundHeight);
+        randomYPosition > gameRef.size.y - height - Config1.groundHeight);
 
     position.y = randomYPosition;
 

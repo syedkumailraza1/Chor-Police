@@ -38,7 +38,7 @@ class Bird extends SpriteGroupComponent<BirdMovement>
   @override
   void update(double dt) {
     super.update(dt);
-    position.y += Config.birdVelocity * dt;
+    position.y += Config1.birdVelocity * dt;
     if (position.y < 1) {
       gameOver();
     }
@@ -47,7 +47,7 @@ class Bird extends SpriteGroupComponent<BirdMovement>
   void fly() {
     add(
       MoveByEffect(
-        Vector2(0, Config.gravity),
+        Vector2(0, Config1.gravity),
         EffectController(duration: 0.2, curve: Curves.decelerate),
         onComplete: () => current = BirdMovement.down,
       ),
