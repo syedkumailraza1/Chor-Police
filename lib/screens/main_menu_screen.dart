@@ -48,7 +48,7 @@ class MainMenuScreen extends StatelessWidget {
               ),
               // Buttons
               Container(
-                margin: const EdgeInsets.only(top: 200),
+                margin: const EdgeInsets.only(top: 50), // Adjusted margin
                 child: Column(
                   children: [
                     // Start Button
