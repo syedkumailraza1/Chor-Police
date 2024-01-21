@@ -1,4 +1,4 @@
-import 'package:flame_audio/flame_audio.dart';
+import 'package:flame/flame.dart';
 import 'package:flappy_bird_game/game/assets.dart';
 import 'package:flappy_bird_game/game/flappy_bird_game.dart';
 import 'package:flappy_bird_game/screens/howto.dart';
@@ -16,70 +16,82 @@ class MainMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Pause the game engine when MainMenuScreen is displayed
     game.pauseEngine();
 
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(Assets.menu),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Row(children: [
-          SizedBox(
-            width: 350,
-          ),
-          Container(
-            alignment: Alignment.topCenter,
-            margin: const EdgeInsets.only(top: 50),
-            child: Text(
-              "Chor-चिट्ठी",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40),
-              textAlign: TextAlign.center,
+      body: Center(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(Assets.menu),
+              fit: BoxFit.cover,
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 200, left: 80),
-            child: Expanded(
-                child: Column(
-              children: [
-                SizedBox(
-                  width: 200, 
-                  child: ElevatedButton(
-                    onPressed: () {
-                      print("Removing overlay.");
-                      print("Resuming game.");
-          game.overlays.remove('mainMenu');
-          game.resumeEngine();
-                    },
-                    child: Text("Start",
-                        style: TextStyle(backgroundColor: Colors.transparent)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Game title
+              Container(
+                margin: const EdgeInsets.only(top: 50),
+                child: Text(
+                  "Chor Police",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
                   ),
+                  textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10,),
-                   SizedBox(
-                  width: 200,  
-                  child: ElevatedButton(
-                   onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => HowToPlayDialog(),
-              );
-            },
-                    child: Text("How To Play",
-                        style: TextStyle(backgroundColor: Colors.transparent)),
-                  ),
-                )
-              ],
-            )),
+              ),
+              // Buttons
+              Container(
+                margin: const EdgeInsets.only(top: 200),
+                child: Column(
+                  children: [
+                    // Start Button
+                    SizedBox(
+                      width: 200,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          print("Removing overlay.");
+                          print("Resuming game.");
+                          // Remove MainMenuScreen overlay and resume game
+                          game.overlays.remove('mainMenu');
+                          game.resumeEngine();
+                        },
+                        child: Text(
+                          "Start",
+                          style: TextStyle(backgroundColor: Colors.transparent),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    // How To Play Button
+                    SizedBox(
+                      width: 200,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Show HowToPlayDialog
+                          showDialog(
+                            context: context,
+                            builder: (context) => HowToPlayDialog(),
+                          );
+                        },
+                        child: Text(
+                          "How To Play",
+                          style: TextStyle(backgroundColor: Colors.transparent),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ]),
+        ),
       ),
     );
   }
@@ -88,6 +100,7 @@ class MainMenuScreen extends StatelessWidget {
 class HowToPlayDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Custom dialog to display "How To Play" instructions
     return Dialog(
       child: Container(
         width: 300,

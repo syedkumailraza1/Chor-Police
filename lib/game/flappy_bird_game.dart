@@ -44,18 +44,19 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       anchor: Anchor.center,
       textRenderer: TextPaint(
         style: const TextStyle(
-          fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
+            fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
       ),
     );
   }
 
   TextComponent buildLevelText() {
     return TextComponent(
-      position: Vector2(size.x / 2, size.y / 2 * 0.9), // Adjust position as needed
+      position:
+          Vector2(size.x / 2, size.y / 2 * 0.9), // Adjust position as needed
       anchor: Anchor.center,
       textRenderer: TextPaint(
         style: const TextStyle(
-          fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
+            fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -70,18 +71,21 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
     super.update(dt);
     interval.update(dt);
     score.text = 'Points: ${bird.score}';
-   
-     if (bird.score == 10) {
-    levelText.text ='Level 2';
-  }
-  else if(bird.score == 15){
-    levelText.text ='Level 3';
-  }
-  else if(bird.score == 25){
-    levelText.text ='Level 4';
-  }
-  else{
-   levelText.text ='';
-  }
+
+    print('Current Score: ${bird.score}');
+
+    if (bird.score == 10) {
+      print('Level 2');
+      levelText.text = 'Level 2';
+    } else if (bird.score == 15) {
+      print('Level 3');
+      levelText.text = 'Level 3';
+    } else if (bird.score == 25) {
+      print('Level 4');
+      levelText.text = 'Level 4';
+    } else {
+      print('No level change');
+      levelText.text = '';
+    }
   }
 }
