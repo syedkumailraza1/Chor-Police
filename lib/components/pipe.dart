@@ -37,7 +37,7 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
     // Assign the sprite here
     sprite = Sprite(pipe);
 
-    size = Vector2(100, 100);
+    size = Vector2(130, 130);
 
     // Generate Y position, ensuring no overlap with existing pipes
     double randomYPosition;
@@ -75,7 +75,6 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
 
     // Add the pipe and hitbox
     add(RectangleHitbox());
-    print("Pipe added");
   }
 }
 

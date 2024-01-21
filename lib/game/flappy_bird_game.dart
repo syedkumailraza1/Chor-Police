@@ -8,7 +8,6 @@ import 'package:flappy_bird_game/components/ground.dart';
 import 'package:flappy_bird_game/components/pipe_group.dart';
 import 'package:flappy_bird_game/game/configuration.dart';
 import 'package:flutter/painting.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   FlappyBirdGame();
@@ -17,6 +16,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   Timer interval = Timer(Config1.pipeInterval, repeat: true);
   bool isHit = false;
   late TextComponent score;
+  late TextComponent levelText; // Add a TextComponent for the level
   late AudioPlayer musicPlayer;
 
   bool get pendingPipe => true;
@@ -26,13 +26,13 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
     await super.onLoad();
 
     // Load music
-
     musicPlayer = await FlameAudio.loopLongAudio('music.mp3', volume: 0.5);
     addAll([
       Background(),
       Ground(),
       bird = Bird(),
       score = buildScore(),
+      levelText = buildLevelText(), // Add the level text
     ]);
 
     interval.onTick = () => add(PipeGroup());
@@ -44,7 +44,18 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       anchor: Anchor.center,
       textRenderer: TextPaint(
         style: const TextStyle(
-            fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
+          fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  TextComponent buildLevelText() {
+    return TextComponent(
+      position: Vector2(size.x / 2, size.y / 2 * 0.9), // Adjust position as needed
+      anchor: Anchor.center,
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -59,6 +70,18 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
     super.update(dt);
     interval.update(dt);
     score.text = 'Points: ${bird.score}';
-    // Potential collision detection
+   
+     if (bird.score == 10) {
+    levelText.text ='Level 2';
+  }
+  else if(bird.score == 15){
+    levelText.text ='Level 3';
+  }
+  else if(bird.score == 25){
+    levelText.text ='Level 4';
+  }
+  else{
+   levelText.text ='';
+  }
   }
 }

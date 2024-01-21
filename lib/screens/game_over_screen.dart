@@ -1,4 +1,3 @@
-import 'package:flappy_bird_game/game/assets.dart';
 import 'package:flappy_bird_game/game/flappy_bird_game.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +23,7 @@ class GameOverScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                _getGameOverText(), // Get the appropriate text based on score
+                'Heist Failed!', // Get the appropriate text based on score
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 40,
@@ -45,13 +44,7 @@ class GameOverScreen extends StatelessWidget {
         ),
       );
 
-  String _getGameOverText() {
-    if (game.bird.score > 10) {
-      return 'Heist Successful!';
-    } else {
-      return 'Heist Failed!';
-    }
-  }
+  
 
   void onRestart() {
     game.bird.reset();

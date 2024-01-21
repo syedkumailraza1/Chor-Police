@@ -33,6 +33,7 @@ class Bird extends SpriteGroupComponent<BirdMovement>
 
      RectangleHitbox hitbox = RectangleHitbox(size: Vector2(25, height));
     add(hitbox);
+
   }
 
   @override

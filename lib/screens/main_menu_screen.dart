@@ -50,7 +50,7 @@ class MainMenuScreen extends StatelessWidget {
                 child: Column(
               children: [
                 SizedBox(
-                  width: 250, 
+                  width: 200, 
                   child: ElevatedButton(
                     onPressed: () {
                       print("Removing overlay.");
@@ -64,7 +64,7 @@ class MainMenuScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10,),
                    SizedBox(
-                  width: 250,  
+                  width: 200,  
                   child: ElevatedButton(
                    onPressed: () {
               showDialog(
