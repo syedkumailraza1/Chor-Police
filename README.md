@@ -1,19 +1,43 @@
-# flappy_bird_game
+# Chor Police Game
 
-This is a Flappy Bird game built in Flutter using the Flame engine. If you want to know how to create games with Flutter & Flame, visit our YouTube channel to watch the complete Tutorial.
+Welcome to Chor Police, an exciting game developed using the Flutter Flame engine! In this game, you take on the role of a daring thief who has just pulled off a heist and must now navigate through four challenging levels to escape from relentless police helicopters.
 
-Link: https://youtu.be/zcs8qRBRz7w?si=e4UV_Lf3dbyE9Yj8
+## Features
 
-## Getting Started
+- **Engaging Gameplay:** Experience thrilling gameplay as you control the cunning thief, avoiding obstacles and outsmarting the police helicopters.
+  
+- **Four Exciting Levels:** Progress through four levels of increasing difficulty, each with unique challenges and obstacles.
 
-Once you have downloaded this project, you will find all the assets used with in the game.
+- **Flutter Flame Engine:** Built using the Flutter Flame engine, ensuring smooth performance and captivating graphics.
 
-Here are a few resources to get you started if this is your first Flutter project:
+- **Escape the Police:** Navigate skillfully to evade the pursuing police helicopters and successfully complete each level.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## How to Play
 
-For help getting started with Flutter development, please take a look at the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flappy_bird_game
+1. Clone the repository to your local machine.
+    ```bash
+    git clone https://github.com/your-username/chor-police-game.git
+    ```
+
+2. Ensure you have Flutter installed. If not, follow the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
+
+3. Navigate to the project directory and run the game.
+    ```bash
+    cd chor-police-game
+    flutter run
+    ```
+
+4. Play the game, control the thief character, and strive to escape the police pursuit!
+
+
+## Contributions
+
+Contributions are welcome! If you have ideas for improvements or new features, feel free to submit a pull request.
+
+## Issues
+
+If you encounter any issues or have suggestions, please [open an issue](https://github.com/your-username/chor-police-game/issues).
+
+
+Enjoy playing Chor Police!
+
