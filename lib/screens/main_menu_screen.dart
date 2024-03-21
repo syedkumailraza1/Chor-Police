@@ -1,6 +1,6 @@
 import 'package:flame/flame.dart';
 import 'package:flappy_bird_game/game/assets.dart';
-import 'package:flappy_bird_game/game/flappy_bird_game.dart';
+import 'package:flappy_bird_game/game/chor_police.dart';
 import 'package:flappy_bird_game/screens/howto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +22,14 @@ class MainMenuScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(Assets.menu),
-              fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(Assets.menu),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -46,6 +46,7 @@ class MainMenuScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
+              
               // Buttons
               Container(
                 margin: const EdgeInsets.only(top: 50), // Adjusted margin
@@ -74,11 +75,7 @@ class MainMenuScreen extends StatelessWidget {
                       width: 200,
                       child: ElevatedButton(
                         onPressed: () {
-                          // Show HowToPlayDialog
-                          showDialog(
-                            context: context,
-                            builder: (context) => HowToPlayDialog(),
-                          );
+                          game.overlays.add('Howto');
                         },
                         child: Text(
                           "How To Play",
@@ -97,16 +94,4 @@ class MainMenuScreen extends StatelessWidget {
   }
 }
 
-class HowToPlayDialog extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Custom dialog to display "How To Play" instructions
-    return Dialog(
-      child: Container(
-        width: 300,
-        height: 300,
-        child: Image.asset(Assets.howto), // Replace with your image asset
-      ),
-    );
-  }
-}
+

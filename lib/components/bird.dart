@@ -5,7 +5,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flappy_bird_game/game/bird_movement.dart';
 import 'package:flappy_bird_game/game/assets.dart';
 import 'package:flappy_bird_game/game/configuration.dart';
-import 'package:flappy_bird_game/game/flappy_bird_game.dart';
+import 'package:flappy_bird_game/game/chor_police.dart';
 import 'package:flutter/material.dart';
 
 class Bird extends SpriteGroupComponent<BirdMovement>
@@ -22,7 +22,7 @@ class Bird extends SpriteGroupComponent<BirdMovement>
 
     gameRef.bird;
 
-    size = Vector2(100, 80);
+    size = Vector2(90, 70);
     position = Vector2(50, gameRef.size.y / 2 - size.y / 2);
     current = BirdMovement.middle;
     sprites = {
