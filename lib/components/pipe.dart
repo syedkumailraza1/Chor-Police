@@ -16,7 +16,7 @@ import
  
 'package:flappy_bird_game/game/assets.dart';
 import 'package:flappy_bird_game/game/configuration.dart';
-import 'package:flappy_bird_game/game/flappy_bird_game.dart';
+import 'package:flappy_bird_game/game/chor_police.dart';
 import 'package:flappy_bird_game/game/pipe_position.dart';
 
 class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
@@ -37,7 +37,7 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
     // Assign the sprite here
     sprite = Sprite(pipe);
 
-    size = Vector2(130, 130);
+    size = Vector2(110, 110);
 
     // Generate Y position, ensuring no overlap with existing pipes
     double randomYPosition;

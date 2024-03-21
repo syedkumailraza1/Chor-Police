@@ -8,15 +8,17 @@ import 'package:flappy_bird_game/components/ground.dart';
 import 'package:flappy_bird_game/components/pipe_group.dart';
 import 'package:flappy_bird_game/game/configuration.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
 
-class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
+
+class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection, WidgetsBindingObserver {
   FlappyBirdGame();
 
   late Bird bird;
   Timer interval = Timer(Config1.pipeInterval, repeat: true);
   bool isHit = false;
   late TextComponent score;
-  late TextComponent levelText; // Add a TextComponent for the level
+  late TextComponent levelText; 
   late AudioPlayer musicPlayer;
 
   bool get pendingPipe => true;
@@ -27,6 +29,10 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
 
     // Load music
     musicPlayer = await FlameAudio.loopLongAudio('music.mp3', volume: 0.5);
+
+      // Add observer for lifecycle events
+    WidgetsBinding.instance?.addObserver(this);
+   
     addAll([
       Background(),
       Ground(),
@@ -38,7 +44,30 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
     interval.onTick = () => add(PipeGroup());
   }
 
-  TextComponent buildScore() {
+  @override
+  void dispose() {
+    // Stop the music when the game is disposed
+    musicPlayer.dispose();
+
+    // Remove observer for lifecycle events
+    WidgetsBinding.instance?.removeObserver(this);
+
+    
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // Handle pause and resume events
+    if (state == AppLifecycleState.paused) {
+      // Pause audio when the app is paused
+      musicPlayer.stop();
+    } else if (state == AppLifecycleState.resumed) {
+      // Resume audio when the app is resumed
+      musicPlayer.resume();
+    }
+  }
+
+  TextComponent buildScore() {  
     return TextComponent(
       position: Vector2(size.x / 2, size.y / 2 * 0.2),
       anchor: Anchor.center,
@@ -54,7 +83,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       position:
           Vector2(size.x / 2, size.y / 2 * 0.9), // Adjust position as needed
       anchor: Anchor.center,
-      textRenderer: TextPaint(
+     textRenderer: TextPaint(
         style: const TextStyle(
             fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
       ),

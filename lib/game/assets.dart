@@ -1,4 +1,6 @@
 class Assets {
+    static const splash = 'splash.png';
+
   static const backgorund = 'mainbg.png';
   static const ground = 'ground.png';
   static const clouds = 'clouds.png';
